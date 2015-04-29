@@ -51,7 +51,8 @@ module EnumHelp
     end
 
     def self.translate_enum_label(klass, attr_name, enum_label)
-      ::I18n.t("enums.#{klass.to_s.underscore}.#{attr_name}.#{enum_label}", default: enum_label)
+      i18n_key = "activerecord.attributes.#{klass.model_name.singular}.#{attr_name.to_s.pluralize}.#{enum_label}"
+      ::I18n.t(i18n_key, default: enum_label)
     end
 
   end
